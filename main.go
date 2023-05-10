@@ -1,14 +1,19 @@
 package main
 
 import (
-	"praktikum/config"
-	"praktikum/routes"
+	"project_structure/config"
+	"project_structure/middleware"
+	"project_structure/route"
+
+	"github.com/labstack/echo/v4"
 )
 
 func main() {
-	config.Init()
+	db := config.InitDB()
+	e := echo.New()
+	middleware.Logmiddleware(e)
 
-	e := routes.New()
+	route.NewRoute(e, db)
 
-	e.Logger.Fatal(e.Start(":8000"))
+	e.Logger.Fatal(e.Start(":8080"))
 }
