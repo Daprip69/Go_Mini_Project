@@ -2,7 +2,7 @@ package route
 
 import (
 	"net/http"
-	"project_structure/controller"
+	"Go_Mini_Project/controller"
 
 	"github.com/go-playground/validator"
 	"github.com/labstack/echo/v4"
@@ -36,19 +36,19 @@ func NewRoute(e *echo.Echo, db *gorm.DB) {
 	user.DELETE("/:id", controller.DeleteUserController)
 
 	// book collection
-	book := e.Group("/books")
-	book.GET("", controller.GetBookController)
-	book.GET("/:id", controller.GetBookController)
-	book.POST("", controller.CreateBookController)
-	book.PUT("/:id", controller.UpdateBookController)
-	book.DELETE("/:id", controller.DeleteBookController)
+	consultation := e.Group("/consultations")
+	consultation.GET("", controller.GetConsultationsController)
+	consultation.GET("/:id", controller.GetConsultationController)
+	consultation.POST("", controller.CreateConsultationController)
+	consultation.PUT("/:id", controller.UpdateConsultationController)
+	consultation.DELETE("/:id", controller.DeleteConsultationController)
 
 	// book collection
-	blog := e.Group("/blogs")
-	blog.GET("", controller.GetBlogController)
-	blog.GET("/:id", controller.GetBlogController)
-	blog.POST("", controller.CreateBlogController)
-	blog.PUT("/:id", controller.UpdateBlogController)
-	blog.DELETE("/:id", controller.DeleteBlogController)
+	feedback := e.Group("/feedbacks")
+	feedback.GET("", controller.GetFeedbacksController)
+	feedback.GET("/:id", controller.GetFeedbackController)
+	feedback.POST("", controller.CreateFeedbackController)
+	feedback.PUT("/:id", controller.UpdateFeedbackController)
+	feedback.DELETE("/:id", controller.DeleteFeedbackController)
 
 }
