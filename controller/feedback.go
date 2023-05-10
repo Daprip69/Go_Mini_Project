@@ -2,49 +2,48 @@ package controller
 
 import (
 	"net/http"
-	"project_structure/model"
+	"Go_Mini_Project/model"
+	"Go_Mini_Project/usecase"
 	"strconv"
-
-	"project_structure/usecase"
 
 	"github.com/labstack/echo/v4"
 )
 
-func GetBookcontroller(c echo.Context) error {
-	books, e := usecase.GetListBooks()
+func GetFeedbackscontroller(c echo.Context) error {
+	feedbacks, e := usecase.GetListFeedbacks()
 	if e != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, e.Error())
 	}
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"status": "success",
-		"books":  books,
+		"feedback":  feedbacks,
 	})
 }
 
-func GetBookController(c echo.Context) error {
+func GetFeedbackController(c echo.Context) error {
 	id, _ := strconv.ParseUint(c.Param("id"), 10, 32)
-	book, err := usecase.GetBook(uint(id))
+	feedback, err := usecase.GetFeedback(uint(id))
 
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
-			"messages":         "error get book",
+			"messages":         "error get feedback",
 			"errorDescription": err,
 		})
 	}
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"status": "success",
-		"books":  book,
+		"feedback":  feedback,
 	})
 }
 
-// create new book
-func CreateBookController(c echo.Context) error {
-	book := model.Book{}
-	c.Bind(&book)
+// create new feedback
+func CreateFeedbackController(c echo.Context) error {
+	feedback := model.Feedback{}
+	c.Bind(&feedback)
 
-	if err := usecase.CreateBook(&book); err != nil {
+	if err := usecase.CreateFeedback(&feedback); err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
 			"messages":         "error create book",
 			"errorDescription": err,
@@ -53,18 +52,18 @@ func CreateBookController(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"message": "success create new book",
-		"book":    book,
+		"feedback":    feedback,
 	})
 }
 
-// delete book by id
-func DeleteBookController(c echo.Context) error {
+// delete feedback by id
+func DeleteFeedbackController(c echo.Context) error {
 	id, _ := strconv.ParseUint(c.Param("id"), 10, 32)
-	if err := usecase.DeleteBook(uint(id)); err != nil {
+	if err := usecase.DeleteFeedback(uint(id)); err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
-			"messages":         "error delete book",
+			"messages":         "error delete feedback",
 			"errorDescription": err,
-			"errorMessage":     "Mohon Maaf buku tidak dapat di hapus",
+			"errorMessage":     "Mohon Maaf feedback tidak dapat di hapus",
 		})
 	}
 
@@ -73,21 +72,21 @@ func DeleteBookController(c echo.Context) error {
 	})
 }
 
-// update book by id
-func UpdateBookController(c echo.Context) error {
+// update feedback by id
+func UpdateFeedbackController(c echo.Context) error {
 	id, _ := strconv.ParseUint(c.Param("id"), 10, 32)
-	book := model.Book{}
-	c.Bind(&book)
-	book.ID = uint(id)
-	if err := usecase.UpdateBook(&book); err != nil {
+	feedback := model.Feedback{}
+	c.Bind(&feedback)
+	feedback.ID = uint(id)
+	if err := usecase.UpdateFeedback(&feedback); err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
-			"messages":         "error update book",
+			"messages":         "error update feedback",
 			"errorDescription": err,
-			"errorMessage":     "Mohon Maaf buku tidak dapat di ubah",
+			"errorMessage":     "Mohon Maaf feedback tidak dapat di ubah",
 		})
 	}
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"message": "success update book",
+		"message": "success update feedback",
 	})
 }

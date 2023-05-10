@@ -1,11 +1,11 @@
 package controller
 
 import (
+	"Go_Mini_Project/middleware"
+	"Go_Mini_Project/model"
+	"Go_Mini_Project/model/payload"
+	"Go_Mini_Project/usecase"
 	"net/http"
-	"project_structure/middleware"
-	"project_structure/model"
-	"project_structure/model/payload"
-	"project_structure/usecase"
 	"strconv"
 
 	"github.com/labstack/echo/v4"
