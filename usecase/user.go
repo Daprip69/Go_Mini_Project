@@ -61,12 +61,12 @@ func GetUser(id uint) (user model.User, err error) {
 		fmt.Println("GetUser: Error getting user from database")
 		return
 	}
-	blog, err := database.GetBlogsByUserId(id)
+	feedback, err := database.GetFeedbacksByUserId(id)
 	if err != nil {
 		fmt.Println("GetUser: Error getting user from database")
 		return
 	}
-	user.Blogs = append(user.Blogs, blog)
+	user.Feedbacks = append(user.Feedbacks, feedback)
 	return
 }
 
