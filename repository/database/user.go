@@ -1,8 +1,8 @@
 package database
 
 import (
-	"project_structure/config"
-	"project_structure/model"
+	"Go_Mini_Project/config"
+	"Go_Mini_Project/model"
 )
 
 func CreateUser(user *model.User) error {
