@@ -16,7 +16,7 @@ func GetConsultationsController(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, e.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"status":        "success",
+		"status":       "success",
 		"consultation": consultations,
 	})
 }

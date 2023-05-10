@@ -1,11 +1,11 @@
 package usecase
 
 import (
+	"Go_Mini_Project/middleware"
+	"Go_Mini_Project/model"
+	"Go_Mini_Project/model/payload"
+	"Go_Mini_Project/repository/database"
 	"fmt"
-	"project_structure/middleware"
-	"project_structure/model"
-	"project_structure/model/payload"
-	"project_structure/repository/database"
 )
 
 func LoginUser(user *model.User) (err error) {
@@ -61,12 +61,6 @@ func GetUser(id uint) (user model.User, err error) {
 		fmt.Println("GetUser: Error getting user from database")
 		return
 	}
-	feedback, err := database.GetFeedbacksByUserId(id)
-	if err != nil {
-		fmt.Println("GetUser: Error getting user from database")
-		return
-	}
-	user.Feedbacks = append(user.Feedbacks, feedback)
 	return
 }
 

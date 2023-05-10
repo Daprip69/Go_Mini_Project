@@ -9,7 +9,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func GetFeedbackscontroller(c echo.Context) error {
+func GetFeedbacksController(c echo.Context) error {
 	feedbacks, e := usecase.GetListFeedbacks()
 	if e != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, e.Error())

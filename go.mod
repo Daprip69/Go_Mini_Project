@@ -1,4 +1,4 @@
-module project_structure
+module Go_Mini_Project
 
 go 1.18
 

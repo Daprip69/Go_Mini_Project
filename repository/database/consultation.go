@@ -5,7 +5,7 @@ import (
 	"Go_Mini_Project/model"
 )
 
-func CreateConsultation(blog *model.Consultation) error {
+func CreateConsultation(consultation *model.Consultation) error {
 	if err := config.DB.Create(consultation).Error; err != nil {
 		return err
 	}
@@ -13,7 +13,7 @@ func CreateConsultation(blog *model.Consultation) error {
 }
 
 func GetConsultations() (consultations []model.Consultation, err error) {
-	if err = config.DB.Find(&Consultations).Error; err != nil {
+	if err = config.DB.Find(&consultations).Error; err != nil {
 		return
 	}
 	return

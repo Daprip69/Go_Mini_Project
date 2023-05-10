@@ -1,8 +1,8 @@
 package usecase
 
 import (
-	"project_structure/model"
-	"project_structure/model/payload"
+	"Go_Mini_Project/model"
+	"Go_Mini_Project/model/payload"
 	"testing"
 )
 

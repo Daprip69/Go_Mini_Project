@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"project_structure/constant"
+	"Go_Mini_Project/constant"
 	"time"
 
 	jwt "github.com/dgrijalva/jwt-go"

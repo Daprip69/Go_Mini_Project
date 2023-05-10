@@ -1,9 +1,9 @@
 package main
 
 import (
-	"project_structure/config"
-	"project_structure/middleware"
-	"project_structure/route"
+	"Go_Mini_Project/config"
+	"Go_Mini_Project/middleware"
+	"Go_Mini_Project/route"
 
 	"github.com/labstack/echo/v4"
 )
