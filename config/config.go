@@ -10,17 +10,12 @@ import (
 
 var DB *gorm.DB
 
-// "DB_Username": "root",
-// "DB_Password": "Qoala202!",
-// "DB_Port":     "3306",
-// "DB_Host":     "altadb.c3fzsopw9aux.ap-southeast-1.rds.amazonaws.com",
-// "DB_Name":     "structure_project",
 func InitDB() *gorm.DB {
 	config := map[string]string{
 		"DB_Username": "alta",
-		"DB_Password": "alta",
+		"DB_Password": "Kuripan69",
 		"DB_Port":     "3306",
-		"DB_Host":     "172.20.10.2",
+		"DB_Host":     "localhost",
 		"DB_Name":     "mini_project",
 	}
 
@@ -41,5 +36,5 @@ func InitDB() *gorm.DB {
 }
 
 func InitMigrate() {
-	DB.AutoMigrate(&model.User{}, &model.Book{}, &model.Blog{})
+	DB.AutoMigrate(&model.User{}, &model.Consultation{}, &model.Feedback{})
 }
