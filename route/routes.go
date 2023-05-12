@@ -25,6 +25,7 @@ func NewRoute(e *echo.Echo, db *gorm.DB) {
 	e.Validator = &CustomValidator{validator: validator.New()}
 
 	e.POST("/login", controller.LoginUserController)
+	//localhost:/register untuk hit API
 	e.POST("/register", controller.CreateUserController)
 
 	// user collection
